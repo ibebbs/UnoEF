@@ -11,7 +11,11 @@ namespace UnoEF.Data
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options
+#if __ANDROID__
+                .UseSqlServer("Data Source=10.0.2.2;User ID=sa;Password=yourStrong(!)Password;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+#else
                 .UseSqlServer("Data Source=localhost;User ID=sa;Password=yourStrong(!)Password;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+#endif
                 .UseLoggerFactory(Logging.Factory);
         }
 

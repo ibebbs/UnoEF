@@ -25,10 +25,10 @@ namespace UnoEF
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-            using (var db = new Data.BloggingContext())
-            {
-                db.Database.Migrate();
-            }
+            //using (var db = new Data.BloggingContext())
+            //{
+            //    db.Database.Migrate();
+            //}
         }
 
         /// <summary>
