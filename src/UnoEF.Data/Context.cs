@@ -11,7 +11,7 @@ namespace UnoEF.Data
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options
-                .UseNpgsql(@"User ID=ahzvnzhr;Password=mYRyqmL2X0QiCmzzMU14wSlgL9493Sjv;Server=dumbo.db.elephantsql.com;Port=5432;Database=ahzvnzhr;Pooling=true;", o => o.SetPostgresVersion(new System.Version(9, 6)))
+                .UseSqlServer("Data Source=localhost;User ID=sa;Password=yourStrong(!)Password;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
                 .UseLoggerFactory(Logging.Factory);
         }
 
