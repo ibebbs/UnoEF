@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace UnoEF.Data
 {
@@ -10,8 +12,10 @@ namespace UnoEF.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
+            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "blogging.db");
+
             options
-                .UseNpgsql(@"User ID=ahzvnzhr;Password=mYRyqmL2X0QiCmzzMU14wSlgL9493Sjv;Server=dumbo.db.elephantsql.com;Port=5432;Database=ahzvnzhr;Pooling=true;", o => o.SetPostgresVersion(new System.Version(9, 6)))
+                .UseSqlite($"Data Source={dbPath}")
                 .UseLoggerFactory(Logging.Factory);
         }
 

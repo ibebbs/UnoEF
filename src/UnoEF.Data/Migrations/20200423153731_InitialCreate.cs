@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace UnoEF.Data.Migrations
 {
@@ -12,7 +11,7 @@ namespace UnoEF.Data.Migrations
                 columns: table => new
                 {
                     BlogId = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Url = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -25,7 +24,7 @@ namespace UnoEF.Data.Migrations
                 columns: table => new
                 {
                     PostId = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     BlogId = table.Column<int>(nullable: false)
